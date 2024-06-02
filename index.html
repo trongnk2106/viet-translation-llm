@@ -4,109 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Language Model-based Translator for English-Vietnamese Translation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <style>
         body {
-            margin: 20px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
         }
-        h1, h2, h3 {
-            margin-top: 30px;
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            line-height: 1.6;
+       ;
         }
-        pre {
-            background: #f4f4f4;
-            padding: 10px;
-            border-radius: 5px;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+
+        .authors {
+            text-align: center;
+            margin-bottom: 1.5em;
+            display: flex;
+            justify-content: center;
+        }
+
+        .authors p {
+            margin: 0.2em 0;
+            margin-left: 15px;
+        }
+
+        .affiliation {
+            text-align: center;
+            font-size: 1em;
+            margin-top: 1em;
+            margin-bottom: 1.5em;
+            font-style: italic;
+        }
+
+        .abstract {
+            margin-top: 20px;
+        }
+
+        .abstract h2 {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 2px solid #eaeaea;
+            padding-bottom: 0.25em;
+        }
+
+        .abstract p {
+            text-align: justify;
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: #1a0dab;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Advanced Language Model-based Translator for English-Vietnamese Translation</h1>
+        <h1>Advanced Language Model-based Translator for</h1>
+        <h1>English-Vietnamese Translation</h1>
+        
+        <div class="authors">
+            <p><strong>Hoai Nam Nguyen</strong> <br><a href="mailto:hoainam1001.nhn@gmail.com">hoainam1001.nhn@gmail.com</a></p>
+            <p><strong>Thanh Trong Nguyen</strong> <br><a href="mailto:trongnt2002@gmail.com">trongnt2002@gmail.com</a></p>
+            <p><strong>Quoc Bao Nguyen</strong> <br><a href="mailto:baotg@thinkprompt.com">baotg@thinkprompt.com</a></p>
+            <p><strong>Vu Anh Tran</strong> <br><a href="mailto:andy@thinkprompt.com">andy@thinkprompt.com</a></p>
+        </div>
+        <p class="affiliation"><strong>Doctranslate.io, ThinkPrompt CO., LTD</strong></p>
 
-        <p>
-            We introduce a transformative approach to English-Vietnamese translation, leveraging the cutting-edge capabilities of the Gemma-7B-IT (Gemma Team et al. 2024) model. Enhanced by the Advanced Language Model-based Translator (ALMA) (Xu et al. 2023) methodology, our system significantly advances beyond the conventional Transformer models in handling complex linguistic contexts.
-        </p>
-
-        <p>
-            This research details our robust training framework, experimental validations, and the rigorous evaluation processes that establish a new state-of-the-art for Vietnamese translation tasks. Our results emphatically surpass those of well-known systems such as VinAI Translate (Nguyen et al. 2022) and Google Translate (Google 2024b), demonstrating an improvement of over 12 BLEU scores against the previously top-performing systems.
-        </p>
-
-        <p>
-            These achievements highlight the superior flexibility and contextual understanding capabilities of Large Language Models (LLMs) (Zhao et al. 2023) integrated within our ALMA framework, which excel in adapting to varied translation nuances and complexities.
-        </p>
-
-        <p>
-            Capitalizing on these remarkable advancements, we have also introduced a user-centric translation product, available at <a href="https://www.doctranslate.io" target="_blank">Doctranslate</a> (Doctranslate 2023). This tool embodies our commitment to merging technological innovation with practical utility, offering users a seamless and high-quality translation experience.
-        </p>
-
-        <h2>Getting Started</h2>
-
-        <p>Follow the steps below to set up and run the project.</p>
-
-        <h3>Clone the Repository</h3>
-
-        <pre><code>
-git clone &lt;repository_url&gt;
-cd &lt;repository_directory&gt;
-        </code></pre>
-
-        <h3>Install requirements</h3>
-        <p>Install the necessary packages using <code>requirements.txt</code>:</p>
-
-        <pre><code>
-pip install -r requirements.txt
-        </code></pre>
-
-        <h3>Custom Inference Configuration</h3>
-        <p>Customize the inference configuration file <code>infer.yaml</code> according to your requirements. The <code>infer.yaml</code> file contains parameters for the translation model and other settings. Below is an example configuration:</p>
-
-        <pre><code>
-infer:
-  modelname: "google/gemma-7b-it"           # The name of the model to use for translation
-  adapter: "path adapter"                   # Path to the adapter, if any
-  output_dir: "./translated.csv"            # Output file path for the translated text
-  cache_dir: "./"                           # Directory for caching model files
-  hf_tokens: "hf_tokens"                    # Hugging Face API tokens
-  max_new_tokens: 512                       # Maximum number of tokens to generate
-  num_beams: 5                              # Number of beams for beam search
-  early_stopping: True                      # Whether to stop early when the model is confident
-  no_repeat_ngram_size: 3                   # Size of n-grams that should not be repeated
-  repetition_penalty: 1                     # Penalty for repeating tokens
-  min_new_tokens: -1                        # Minimum number of tokens to generate
-  length_penalty: 2.0                       # Penalty for the length of the generated text
-  top_k: 50                                 # The number of highest probability vocabulary tokens to keep for top-k-filtering
-  top_p: 0.95                               # Cumulative probability for top-p-filtering
-  temperature: 0.1                          # Sampling temperature
-
-translate:
-  source_lang: "English"                    # Source language
-  target_lang: "Vietnamese"                 # Target language
-  file_path:                                # Path to the file (txt or csv) with the text to translate
-  text: "Hi, I'm doc translate bot"         # Text to translate if no file is provided
-        </code></pre>
-
-        <h3>Running the Translation</h3>
-        <p>Run the translation script with the customized configuration file:</p>
-
-        <pre><code>
-python utils/infer.py --config config/infer.yaml
-        </code></pre>
-
-        <h2>Repository Structure</h2>
-        <p>The repository is organized as follows:</p>
-
-        <ul>
-            <li><code>config/</code>: Contains configuration files.</li>
-            <li><code>utils/</code>: Contains utility scripts, including the inference script.</li>
-            <li><code>requirements.txt</code>: Lists the required Python packages for the project.</li>
-        </ul>
-
-        <h2>License</h2>
-        <p>This project is licensed under the MIT License. See the LICENSE file for details.</p>
-
-        <h2>Acknowledgements</h2>
-        <p>Special thanks to all contributors and the open-source community for their support and contributions.</p>
+        <div class="abstract">
+            <h2>Abstract</h2>
+            <p>
+                We introduce a transformative approach to English-Vietnamese translation, leveraging the cutting-edge capabilities of the Gemma-7B-IT (Team et al. 2024) model. Enhanced by the Advanced Language Model-based Translator (ALMA) (Xu et al. 2023) methodology, our system significantly advances beyond the conventional Transformer models in handling complex linguistic contexts. This research details our robust training framework, experimental validations, and the rigorous evaluation processes that establish a new state-of-the-art for Vietnamese translation tasks.
+            </p>
+            <p>
+                Our results emphatically surpass those of well-known systems such as VinAI Translate (Nguyen et al. 2022) and Google Translate (Google 2024b), demonstrating an improvement of over 12 BLEU scores against the previously top-performing systems. These achievements highlight the superior flexibility and contextual understanding capabilities of Large Language Models (LLMs) (Zhao et al. 2023) integrated within our ALMA framework, which excel in adapting to varied translation nuances and complexities.
+            </p>
+            <p>
+                Capitalizing on these remarkable advancements, we have also introduced a user-centric translation product, available at <a href="https://www.doctranslate.io" target="_blank">Doctranslate</a> (Doctranslate 2023). This tool embodies our commitment to merging technological innovation with practical utility, offering users a seamless and high-quality translation experience.
+            </p>
+        </div>
+        <div class="abstract">
+                
+        </div>
     </div>
 </body>
 </html>
